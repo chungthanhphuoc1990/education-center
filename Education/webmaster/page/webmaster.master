@@ -1,0 +1,614 @@
+﻿<%@ master language="C#" autoeventwireup="true" inherits="webmaster.page.webmaster_page_webmaster, App_Web_aequ5ydj" %>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Control Panel</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <%--JQuery-min--%>
+    <script src="../Style/Bootstrap/js/jquery.min.js"></script>
+    <%--End--%>
+    
+    <!--Bootstrap-->
+    <link href="../Style/JqueryUI/jquery-ui.css" rel="stylesheet" />
+    <link href="../Style/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="../Style/Bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="../Style/Bootstrap/css/simple-sidebar.css" rel="stylesheet" />
+    <script src="../Style/Bootstrap/js/bootstrap.js" type="text/javascript"></script>
+    <script src="../Style/JqueryUI/jquery-ui.min.js"></script>
+    <script src="../Style/LaguageDatePicker/languagedatepicker.js"></script>
+    <script src="../Style/Mask/jquery.maskedinput.js"></script>
+    <%--End--%>
+    
+    <%--MyScript--%>
+    <script src="../Style/MyScript.js"></script>
+    <%--End--%>
+    
+    <%--MyStyle--%>
+    <link href="../Style/Admin.css" rel="stylesheet" />
+    <%--End--%>
+
+    <%--CKEditor--%>
+    <script src="../../Content/ckeditor/ckeditor.js"></script>
+    <script src="../../Content/ckfinder/ckfinder.js"></script>
+    <script src="../../Content/ckeditor/adapters/jquery.js"></script>
+    <script src="../../Content/ckfinder/ckfinderV2.js"></script>
+    <%--End--%>
+
+    <%--Alert--%>
+    <link href="../Scripts/Alert/jquery.alerts.css" rel="stylesheet" />
+    <script src="../Scripts/Alert/jquery.alerts.js"></script>
+    <%--End--%>
+    
+    <style>
+        .loadding {
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 30%;
+        }
+        .loadding-main {
+            width: 11%;
+            margin: auto;
+        }
+    </style>
+
+    <%--PageLoad--%>
+    <script>
+        function pageLoad() {
+            TooltipA(".btnCloseFormedit", "right");
+            TooltipA("#btnCloseForm", "right");
+            TooltipA("#btnCloseFormedit", "right");
+            TooltipA(".deltotrash", "bottom");
+            TooltipA(".btnAddNew", "bottom");
+            TooltipA(".btnDel", "bottom");
+            TooltipA(".btnSave", "bottom");
+            TooltipA(".btnCancel", "bottom");
+            TooltipA(".btnlist", "bottom");
+            TooltipA(".refresh", "bottom");
+            TooltipA(".btnSearch", "bottom");
+            TooltipA(".textbox-search", "bottom");
+            TooltipA(".dropdownlistfillter", "bottom");
+            TooltipA(".btn-refresh", "right");
+            TooltipA(".groupbutton", "bottom");
+            TooltipA(".search", "bottom");
+            TooltipA(".num", "bottom");
+            MarkInputDay(".daytime");
+        }
+    </script>
+    <%--End--%>
+    
+    <%--FormatNumber--%>
+    <script src="../Scripts/formatnumber.js"></script>
+    <%--End--%>
+    
+    <%--PopupConfirm--%>
+    <script type="text/javascript">
+        var _confirm = false;
+        function confirmCheckIn(button) {
+            if (_confirm == false) {
+                jQuery('<div>')
+                    .html("<p>Bạn có muốn xoá mẫu tin này không ? </p>")
+                    .dialog({
+                        autoOpen: true,
+                        modal: true,
+                        title: "Thông Báo",
+                        height: "auto",
+                        width: "390px",
+                        position: ['center', 50],
+                        buttons: {
+                            "Đồng ý": function () {
+                                jQuery(this).dialog("close");
+                                _confirm = true;
+                                button.click();
+                                _confirm = false;
+                            },
+                            "Bỏ qua": function () {
+                                jQuery(this).dialog("close");
+                            }
+                        },
+                    });
+            }
+            return _confirm;
+        }
+
+        var _confirm1 = false;
+        function confirmCheckOut(button) {
+            if (_confirm1 == false) {
+                jQuery('<div>')
+                    .html("<p>Bạn có muốn lưu mẫu tin này không ? </p>")
+                    .dialog({
+                        autoOpen: true,
+                        modal: true,
+                        title: "Thông Báo",
+                        height: "auto",
+                        width: "390px",
+                        position: ['center', 50],
+                        buttons: {
+                            "Đồng ý": function () {
+                                jQuery(this).dialog("close");
+                                _confirm1 = true;
+                                button.click();
+                                _confirm1 = false;
+                            },
+                            "Bỏ qua": function () {
+                                jQuery(this).dialog("close");
+                            }
+                        },
+                    });
+            }
+            return _confirm1;
+        }
+    </script>
+    <%--End--%>
+    
+    <%--Call-Popup--%>
+    <script>
+        function CallPopup() {
+            $('#<%= txtOldPass.ClientID %>').val("");
+            $('#<%= txtNewPass.ClientID %>').val("");
+            $("#myModalChangePass").modal('show');
+        };
+    </script>
+    <%--End--%>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <%--Loadding-Page--%>
+    <script>
+        $(window).load(function () {
+            $('#dvLoading').fadeOut("slow");
+        });
+    </script>
+    <%--End--%>
+</head>
+<body>
+    <form id="FormWebMaster" runat="server">
+     <div id="dvLoading" style="position: fixed; text-align: center; height: 100%; width: 100%; top: 0; right: 0; left: 0; z-index: 9999999; background-color: #000000; opacity: 0.7;">
+        <div class="loadding">
+            <div class="loadding-main">
+                <asp:Image ID="ImageLoadingPage" runat="server"  ImageUrl="../ImagesLogin/fancybox_loading.gif" AlternateText="Đang tải ..." ToolTip="Đang tải ..." style="padding: 10px;top:45%;left:50%;" />
+                <span class="label label-danger">
+                    <asp:Label ID="lbLoadingPage" runat="server" Text="Đang tải..."/>
+                </span>  
+            </div>
+        </div>
+    </div>
+    <asp:ScriptManager ID="ScriptManagerWebmaster" runat="server"/>
+        <div class="navbar navbar-inverse">
+                <div class="navbar-header">
+                    <a class="navbar-brand menu" title="Menu" href="#" id="menu-toggle">
+                        <span class="glyphicon glyphicon-th-list"></span>
+                    </a>
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="navbar-collapse collapse navbar-inverse-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="Default.aspx" title="Trở về trang quản lý"><span class="glyphicon glyphicon-home"></span></a></li>
+                    </ul>
+                
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> <%=_GetUserName %> <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="#" onclick="CallPopup();">Đỗi mật khẩu</a>
+                                </li>
+                               <li class="divider"></li>
+                                <li><asp:LinkButton ID="linkExit" runat="server" OnClick="linkExit_Click">Thoát</asp:LinkButton></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        <%--ChangePass--%>
+        <div class="modal fade" id="myModalChangePass" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header modal-header-background">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title modal-titile">Đỗi mật khẩu</h4>
+                    </div>
+                    <div class="modal-body modal-body-height">
+                        <asp:UpdatePanel ID="UpdatePanelUser" runat="server">
+                            <ContentTemplate>
+                                <asp:Label ID="lbID" runat="server" Text="" Visible="False"></asp:Label>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="control-label">Mật khẩu cũ</label>
+                                            <input class="form-control" id="txtOldPass" type="password" runat="server"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="control-label">Mật khẩu mới</label>
+                                            <input class="form-control" id="txtNewPass" type="password" runat="server"/>
+                                        </div>
+                                    </div>
+                            </ContentTemplate>
+                            <Triggers>
+                                <asp:AsyncPostBackTrigger ControlID="btnUpdate" EventName="Click"/>
+                            </Triggers>
+                        </asp:UpdatePanel>
+                        <div class="clr"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <asp:UpdatePanel ID="UpdatePanelControl" runat="server">
+                            <ContentTemplate>
+                                <%=_Msg %>
+                                <asp:Button ID="btnUpdate" CssClass="btn btn-primary" runat="server" Text="Cập nhật" OnClick="btnUpdate_Click"/>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng lại</button>
+                            </ContentTemplate>
+                            <Triggers>
+                                <asp:AsyncPostBackTrigger ControlID="btnUpdate" EventName="Click"/>
+                            </Triggers>
+                        </asp:UpdatePanel>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%--End--%>
+
+        <%--Process--%>
+        <asp:UpdateProgress ID="UpdateProgressButtonChange" runat="server" AssociatedUpdatePanelID="UpdatePanelControl">
+            <ProgressTemplate>
+                <div style="position: fixed; text-align: center; height: 100%; width: 100%; top: 0; right: 0; left: 0; z-index: 9999999; background-color: #000000; opacity: 0.7;">
+                    <div class="loadding">
+                        <div class="loadding-main">
+                            <asp:Image ID="Image2" runat="server"  ImageUrl="../ImagesLogin/fancybox_loading.gif" AlternateText="Đang tải ..." ToolTip="Đang tải ..." style="padding: 10px;top:45%;left:50%;" />
+                            <span class="label label-danger">
+                                <asp:Label ID="Label2" runat="server" Text="Đang tải..."/>
+                            </span>  
+                        </div>
+                    </div>
+                </div>
+            </ProgressTemplate>
+        </asp:UpdateProgress>
+        <%--End--%>
+        <div id="wrapper">
+            <!--Sidebar-->
+            <div id="sidebar-wrapper">
+                <div class="panel-group" id="accordion" runat="server">
+                    <%--<div class="panel panel-default" id="DanhMucMain" runat="server">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                    <span class="glyphicon glyphicon-folder-close"></span>
+                                    Danh mục trình đơn
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseOne" runat="server" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <table class="table">
+                                    <tr id="MenuCatalog_Main" runat="server">
+                                        <td>
+                                            <span class="glyphicon glyphicon-th-list"></span><a href="Catalog_Main.aspx" id="Catalog_Main" runat="server">Trình đơn chính</a>
+                                        </td>
+                                    </tr>
+                                    <tr id="MenuCatalog_Prarent" runat="server">
+                                        <td>
+                                            <span class="glyphicon glyphicon-th-list"></span><a href="Catalog_Prarent.aspx" id="Catalog_Prarent" runat="server">Trình đơn con</a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default" id="DanhMucChild" runat="server">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseNight">
+                                    <span class="glyphicon glyphicon-folder-close"></span>
+                                    Danh mục con
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseNight" runat="server" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <table class="table">
+                                    <tr id="MenuCatalogMainChild" runat="server">
+                                        <td>
+                                            <span class="glyphicon glyphicon-th-list"></span><a href="Catalog_Main_Child.aspx" id="Catalog_Main_Child" runat="server">Trình đơn chính</a>
+                                        </td>
+                                    </tr>
+                                    <tr id="MenuCatalogParrentChild" runat="server">
+                                        <td>
+                                            <span class="glyphicon glyphicon-th-list"></span><a href="Catalog_Prarent_Child.aspx" id="Catalog_Prarent_Child" runat="server">Trình đơn con</a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default" id="DanhMucTinTuc" runat="server">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                    <span class="glyphicon glyphicon-folder-close"></span>
+                                    Danh mục tin tức
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseTwo" runat="server" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <table class="table">
+                                    <tr id="NewMain" runat="server">
+                                        <td>
+                                            <span class="glyphicon glyphicon-th-list"></span><a href="News.aspx" id="News" runat="server">Tin tức</a>
+                                        </td>
+                                    </tr>
+                                    <tr id="CommentMain" runat="server">
+                                        <td>
+                                            <span class="glyphicon glyphicon-th-list"></span><a href="Comment.aspx" id="Comment" runat="server">Quản lý bình luận</a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default" id="DanhMucTinTucParrent" runat="server">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTen">
+                                    <span class="glyphicon glyphicon-folder-close"></span>
+                                    Danh mục tin tức
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseTen" runat="server" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <table class="table">
+                                    <tr id="NewsChild" runat="server">
+                                        <td>
+                                            <span class="glyphicon glyphicon-th-list"></span><a href="News_Child.aspx" id="News_Child" runat="server">Tin tức</a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default" id="DanhMucThongBao" runat="server">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                                    <span class="glyphicon glyphicon-folder-close"></span>
+                                    Danh mục thông báo
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseThree" runat="server" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <table class="table">
+                                     <tr id="NotifyMain" runat="server">
+                                        <td>
+                                            <span class="glyphicon glyphicon-th-list"></span><a href="Notify.aspx" id="Notify" runat="server">Nhóm thông báo</a>
+                                        </td>
+                                    </tr>
+                                    <tr id="NotifyDetailMain" runat="server">
+                                        <td>
+                                            <span class="glyphicon glyphicon-th-list"></span><a href="Notify_Detail.aspx" id="Notify_Detail" runat="server">Thông báo</a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default" id="DanhMucThongBaoChild" runat="server">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseNg">
+                                    <span class="glyphicon glyphicon-folder-close"></span>
+                                    Danh mục thông báo
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseNg" runat="server" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <table class="table">
+                                     <tr id="NotifyChild" runat="server">
+                                        <td>
+                                            <span class="glyphicon glyphicon-th-list"></span><a href="Notify_Child.aspx" id="Notify_Child" runat="server">Nội dung thông báo</a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default" id="DanhMucTienIch" runat="server">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseFore">
+                                    <span class="glyphicon glyphicon-folder-close"></span>
+                                    Danh mục tiện tích
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseFore" runat="server" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <table class="table">
+                                     <tr id="UtilitiesMain" runat="server">
+                                        <td>
+                                            <span class="glyphicon glyphicon-th-list"></span><a href="Utilities.aspx" id="Utilities" runat="server">Nhóm tiện ích</a>
+                                        </td>
+                                    </tr>
+                                    <tr id="UtilitiesDetailMain" runat="server">
+                                        <td>
+                                            <span class="glyphicon glyphicon-th-list"></span><a href="Utilities_Detail.aspx" id="UtilitiesDetail" runat="server">Tiện ích</a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default" id="DanhMucHinhAnh" runat="server">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
+                                    <span class="glyphicon glyphicon-folder-close"></span>
+                                    Danh mục Gallery
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseFive" runat="server" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <table class="table">
+                                     <tr id="GalleryMain" runat="server">
+                                        <td>
+                                            <span class="glyphicon glyphicon-th-list"></span><a href="Gallery.aspx" id="Gallery" runat="server">Nhóm hình ảnh</a>
+                                        </td>
+                                    </tr>
+                                    <tr id="GalleryDetailMain" runat="server">
+                                        <td>
+                                            <span class="glyphicon glyphicon-th-list"></span><a href="Gallery_Detail.aspx" id="GalleryDetail" runat="server">Hình ảnh</a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default" id="DanhMucQuangCao" runat="server">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseSix">
+                                    <span class="glyphicon glyphicon-folder-close"></span>
+                                    Danh mục Quảng Cáo
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseSix" runat="server" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <table class="table">
+                                     <tr id="QuangCaoMain" runat="server">
+                                        <td>
+                                            <span class="glyphicon glyphicon-th-list"></span><a href="Adv.aspx" id="Adv" runat="server">Quảng cáo</a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default" id="DanhMucVideo" runat="server">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseSeven">
+                                    <span class="glyphicon glyphicon-folder-close"></span>
+                                    Danh mục Video
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseSeven" runat="server" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <table class="table">
+                                     <tr id="VideoMain" runat="server">
+                                        <td>
+                                            <span class="glyphicon glyphicon-th-list"></span><a href="Video.aspx" id="Video" runat="server">Video</a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default" id="DanhMucVideoParrent" runat="server">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseEvl">
+                                    <span class="glyphicon glyphicon-folder-close"></span>
+                                    Danh mục Video
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseEvl" runat="server" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <table class="table">
+                                     <tr id="VideoChild" runat="server">
+                                        <td>
+                                            <span class="glyphicon glyphicon-th-list"></span><a href="Video_Child.aspx" id="Video_Child" runat="server">Video</a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default" id="DanhMucTrangTinh" runat="server">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseEg">
+                                    <span class="glyphicon glyphicon-folder-close"></span>
+                                     Hệ Thống
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseEg" runat="server" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <table class="table">
+                                    <tr id="PageSetttingMain" runat="server">
+                                        <td>
+                                            <span class="glyphicon glyphicon-th-list"></span><a href="Page_Setting.aspx" id="Page_Setting" runat="server">Cấu hình trang tĩnh</a>
+                                        </td>
+                                    </tr>
+                                    <tr id="PageMain" runat="server">
+                                        <td>
+                                            <span class="glyphicon glyphicon-th-list"></span><a href="Page.aspx" id="PageMainUpdate" runat="server">Quản lý trang</a>
+                                        </td>
+                                    </tr>
+                                    <tr id="PageVisitCount" runat="server">
+                                        <td>
+                                            <span class="glyphicon glyphicon-th-list"></span><a href="Visit_Count.aspx" id="Visit_Count" runat="server">Cấu hình truy cập</a>
+                                        </td>
+                                    </tr>
+                                    <tr id="PageIntro" runat="server">
+                                        <td>
+                                            <span class="glyphicon glyphicon-th-list"></span><a href="Intro.aspx" id="Intro" runat="server">Giới thiệu trang</a>
+                                        </td>
+                                    </tr>
+                                    <tr id="PageModuleMain" runat="server">
+                                        <td>
+                                            <span class="glyphicon glyphicon-th-list"></span><a href="ModuleMain.aspx" id="ModuleMain" runat="server">Trang chính</a>
+                                        </td>
+                                    </tr>
+                                    <tr id="PageModuleParrent" runat="server">
+                                        <td>
+                                            <span class="glyphicon glyphicon-th-list"></span><a href="ModuleParrent.aspx" id="ModuleParrent" runat="server">Trang con</a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>--%>
+                    <%=_htmlGetMenu %>
+                </div>
+            </div>
+            <!--sidebar-wrapper-->
+            
+            <!-- Page Content -->
+            <div id="page-content-wrapper">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <asp:ContentPlaceHolder ID="ContentPlaceHolderMainMaster" runat="server"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /#page-content-wrapper -->
+        </div>
+
+        <!--MenuToggleScript-->
+        <script type="text/javascript">
+            $("#menu-toggle").click(function (e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+            });
+        </script>
+        <%--End--%>
+    </form>
+</body>
+</html>

@@ -1,0 +1,100 @@
+.bg-body{background:url(../../ImagesLogin/bg.png)}
+#swapper{width: 100%; height: 100%; float:left;}
+#swapper_login{ width: 474px; height:253px; position: absolute; left: 50%; top: 50%; margin-left: -237px; margin-top: -126px;  background:url(../ImagesLogin/../../ImagesLogin/bg_login_2.png) no-repeat 0 0; float:left; z-index:10;}
+#swapper_login .package_logo{ background: url(../../ImagesLogin/name_Product.png) no-repeat 0 0; width: 460px; height: 125px; position: absolute; bottom: -150px; left: 227px;}
+#swapper_login .shadow{ width: 480px; height:26px; background: url(../../ImagesLogin/shadow.png) no-repeat center 0; position: absolute; left:5px; bottom: -45px;}
+#swapper_login .fhrm_bg{ background: url(../../ImagesLogin/bg.png) no-repeat 0 0; width: 460px; height: 125px; position: absolute; bottom: -150px; left: 227px;}
+#swapper_login .swap_browser{ width:300px; height:80px; background: url(../../ImagesLogin/line_right.png) no-repeat right 0; position: absolute; bottom: -133px; left: -62px; text-align:right; padding: 0px; color:#fff; margin:0;  }
+#swapper_login .swap_browser .text{ float:right; clear:both; display:block; padding-top: 15px; text-shadow: 0 1px #000; padding-right:22px; color:#fff;}
+#swapper_login .swap_browser .browser{ position:absolute; bottom:-5px; right:22px; float:right; width:300px;}
+#swapper_login .swap_browser .browser .chrome{ width:auto; float:right; background: url(../../ImagesLogin/icon_Browser.png) no-repeat center 0; text-decoration: none; color:#e2e2e2; font-weight:bold; font-size:11px; padding-top: 30px; text-shadow: 0 1px #000000; margin-left: 15px; }
+#swapper_login .swap_browser .browser .chrome:hover{ color:#fff;}
+#swapper_login .swap_browser .browser .Firefox{ width:auto; float:right; background: url(../../ImagesLogin/icon_Browser.png) no-repeat center -50px; text-decoration: none; color:#e2e2e2; font-weight:bold; font-size:11px; padding-top: 30px; text-shadow: 0 1px #000000; margin-left: 15px;}
+#swapper_login .swap_browser .browser .Firefox:hover{ color:#fff;}
+#swapper_login .swap_browser .browser .Safari{ width:auto; float:right; background: url(../../ImagesLogin/icon_Browser.png) no-repeat center -150px; text-decoration: none; color:#e2e2e2; font-weight:bold; font-size:11px; padding-top: 30px; text-shadow: 0 1px #000000; margin-left: 15px; }
+#swapper_login .swap_browser .browser .Safari:hover{ color:#fff;}
+#swapper_login .swap_browser .browser .Opera{ width:auto; float:right; background: url(../../ImagesLogin/icon_Browser.png) no-repeat center -100px; text-decoration: none; color:#e2e2e2; font-weight:bold; font-size:11px; padding-top: 30px; text-shadow: 0 1px #000000; margin-left: 15px; }
+#swapper_login .swap_browser .browser .Opera:hover{ color:#fff;}
+
+#swapper_login .name_product{ width: 254px; height: 65px; background:url(../../ImagesLogin/name_Product.png) no-repeat 0 0; position: absolute; right: 0; top: -70px;}
+#swapper_login .swap_input_login{ width: 474px; height: 253px; background:url(../ImagesLogin/../ImagesLogin/../../ImagesLogin/bg_login_2.png) no-repeat 0 0; margin: 0 ; float:left; position: relative;}
+
+#swapper_login .swap_form{position: absolute; left: 0; top:0; text-align: left; width: 315px; height: 210px; z-index:2;  }
+#swapper_login .swap_form .title{ font-weight:bold; font-size: 18px; color:#01549b; padding-bottom:10px; width:auto; font-family: Arial; display: none; }
+#swapper_login .swap_form .label{ color:#01549b; text-transform: uppercase; float: left; padding:0px; float: left; margin: 0px 0 0 0; font-size: 13px; display: block; width: 120px; text-align:right; display:none; }
+#swapper_login .swap_form .swap_input{ width: 192px; height: 23px; background: url(bg_input_login.png) no-repeat 0 0; margin-left: 15px; margin-bottom: 7px; position: relative; float: right; }
+#swapper_login .swap_form input.user
+{
+    width: 264px; height: 30px; padding: 0 40px 2px 10px; /*background: url(bg_input_login.png) no-repeat 0 0;*/ border: none; font-size: 12px; position: absolute; top: 45px; left: 30px; font-family: Tahoma; color:#838383;
+    background: url(../../ImagesLogin/icon.png) no-repeat right 0 ,linear-gradient(top, #e6d6b6 0%, #fff1d6 100%);background: url(../../ImagesLogin/icon.png) no-repeat right 0 ,-moz-linear-gradient(top, #e6d6b6 0%, #fff1d6 100%);background:url(../../ImagesLogin/icon.png) no-repeat right 0 , -webkit-linear-gradient(top, #e6d6b6 0%, #fff1d6 100%); background:url(../../ImagesLogin/icon.png) no-repeat right 0 , -o-linear-gradient(top, #e6d6b6 0%, #fff1d6 100%); border-radius:2px;
+    box-shadow: inset 1px 0px 0px rgba(186,105,0,1),inset -1px 0px 0px rgba(186,105,0,1),inset 0 1px 0px rgba(186,105,0,1),inset 0 -1px 0px rgba(189,121,32,1),0 1px 0px rgba(255,255,255,0.25); text-shadow: 0 1px rgba(255,255,255,0.6);
+}
+#swapper_login .swap_form input.user:focus
+{
+  background: url(../../ImagesLogin/icon.png) no-repeat right 0 ,linear-gradient(top, #fff6e5 0%, #ffffff 100%);background: url(../../ImagesLogin/icon.png) no-repeat right 0 ,-moz-linear-gradient(top, #fff6e5 0%, #ffffff 100%);background:url(../../ImagesLogin/icon.png) no-repeat right 0 , -webkit-linear-gradient(top, #fff6e5 0%, #ffffff 100%); background:url(../../ImagesLogin/icon.png) no-repeat right 0 , -o-linear-gradient(top, #fff6e5 0%, #ffffff 100%);
+  color:#000;
+}
+
+#swapper_login .swap_form input.pass
+{
+    width: 264px; height: 30px; padding: 0 40px 2px 10px; /*background: url(bg_input_login.png) no-repeat 0 0;*/ border: none; font-size: 12px; position: absolute; top: 100px; left: 30px; font-family: Tahoma; color:#838383;
+    background: url(../../ImagesLogin/icon.png) no-repeat right -30px ,linear-gradient(top, #e6d6b6 0%, #fff1d6 100%);background: url(../../ImagesLogin/icon.png) no-repeat right -30px ,-moz-linear-gradient(top, #e6d6b6 0%, #fff1d6 100%);background:url(../../ImagesLogin/icon.png) no-repeat right -30px , -webkit-linear-gradient(top, #e6d6b6 0%, #fff1d6 100%);background:url(../../ImagesLogin/icon.png) no-repeat right -30px , -ms-linear-gradient(top, #e6d6b6 0%, #fff1d6 100%); background:url(../../ImagesLogin/icon.png) no-repeat right -30px , -o-linear-gradient(top, #e6d6b6 0%, #fff1d6 100%); border-radius:2px;
+    box-shadow: inset 1px 0px 0px rgba(186,105,0,1),inset -1px 0px 0px rgba(186,105,0,1),inset 0 1px 0px rgba(186,105,0,1),inset 0 -1px 0px rgba(189,121,32,1),0 1px 0px rgba(255,255,255,0.25); text-shadow: 0 1px rgba(255,255,255,0.6);
+}
+#swapper_login .swap_form input.pass:focus
+{
+   background: url(../../ImagesLogin/icon.png) no-repeat right -30px ,linear-gradient(top, #fff6e5 0%, #ffffff 100%);background: url(../../ImagesLogin/icon.png) no-repeat right -30px ,-moz-linear-gradient(top, #fff6e5 0%, #ffffff 100%);background:url(../../ImagesLogin/icon.png) no-repeat right -30px , -webkit-linear-gradient(top, #fff6e5 0%, #ffffff 100%);background:url(../../ImagesLogin/icon.png) no-repeat right -30px , -ms-linear-gradient(top, #fff6e5 0%, #ffffff 100%);background:url(../../ImagesLogin/icon.png) no-repeat right -30px , -o-linear-gradient(top, #fff6e5 0%, #ffffff 100%);
+    color:#000;
+}
+#swapper_login .swap_form .link_button
+{
+    width: auto;  padding: 6px 12px;text-decoration: none; text-transform: uppercase; color:#fff; cursor: pointer; float:left; position:absolute; top: 150px; right:21px;  text-shadow: 0px 1px #5c6b05; text-transform:uppercase; display:block;
+    background: linear-gradient(top, #98ae19 60%, #8b9d26 100%);background: -moz-linear-gradient(top, #98ae19 60%, #8b9d26 100%);background: -webkit-linear-gradient(top, #98ae19 60%, #8b9d26 100%);background: -o-linear-gradient(top, #98ae19 60%, #8b9d26 100%);background: -ms-linear-gradient(top, #98ae19 60%, #8b9d26 100%);
+    border-radius:2px; border: 1px solid #ab6a13; border-bottom: 1px solid #955704; box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+}
+#swapper_login .swap_form .link_button span.nav_right{ display: none; width: 15px; height:28px; position: absolute; right: -15px; top:0; cursor: pointer;}
+#swapper_login .swap_form .link_button:hover
+{
+    background: linear-gradient(top, #98ae19 60%, #8b9d26 100%);background: -moz-linear-gradient(top, #a8bf22 60%, #9aae2a 100%);background: -webkit-linear-gradient(top, #a8bf22 60%, #9aae2a 100%);background: -o-linear-gradient(top, #a8bf22 60%, #9aae2a 100%);background: -ms-linear-gradient(top, #a8bf22 60%, #9aae2a 100%);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.25);
+    }
+#swapper_login .swap_form .link_button:hover span.nav_right{ display: none; background-position: right -28px;}
+#swapper_login .swap_form .swap_save{ width: auto; position:absolute; top: 162px; left:27px; font-size: 11px; color:#000; text-shadow: 0 1px rgba(255,255,255,0.3);}
+
+#swapper_login .swap_copy{width: 100%; height: 32px; background: url(../../ImagesLogin/bg_copy.png) no-repeat 0 0; position: absolute; bottom: 12px; left:12px;}
+#swapper_login .swap_copy a{ text-decoration: none; color:#000; text-shadow: 0px 1px rgba(255,255,255,0.2); font-size: 10px; font-family: Arial; margin: 4px 0 0 12px; float:left;}
+#swapper_login .swap_copy a:hover{ font-style:italic; }
+#swapper_login .swap_copy h{ font-style:italic; font-size:10px; }
+
+#swapper_login .swap_logoSoftware{ height: 253px; width: 104px; position: absolute; right: 30px; top: 0; }
+#swapper_login .swap_logoSoftware .logo{ width: 100%; height: 55px; background: url(../../ImagesLogin/Logo.png) no-repeat 0 0; position:absolute; top:30px; left:0px;}
+#swapper_login .swap_logoSoftware .version{ color:#c90101; font-weight: bold; margin: 25px 0 0 13px;}
+#swapper_login .swap_logoSoftware .version span{color:#363636; font-size: 11px; padding-right: 0px; font-weight: normal;}
+#swapper_login .swap_logoSoftware ul{padding:0; list-style: none; float: left; font-size: 11px; width: 105px; position: absolute; left:0; bottom: 30px; margin:0 0 10px 0; padding:0;}
+#swapper_login .swap_logoSoftware ul li{ margin:0; padding:5px 0 0 0; width: 104px; color:#fff; float:left; clear:both; }
+#swapper_login .swap_logoSoftware ul li .select_box
+{
+    background: url(bg_info.png) no-repeat 0 0; padding:3px ;  display:block; color:#858585; float:left;
+    background: linear-gradient(top, #e6d6b6 0%, #e6d6b6 100%);background:-moz-linear-gradient(top, #e6d6b6 0%, #fff1d6 100%);background:-webkit-linear-gradient(top, #e6d6b6 0%, #fff1d6 100%);background:-ms-linear-gradient(top, #e6d6b6 0%, #fff1d6 100%); background:-o-linear-gradient(top, #e6d6b6 0%, #fff1d6 100%); border-radius:2px;
+    box-shadow: inset 1px 0px 0px rgba(186,105,0,1),inset -1px 0px 0px rgba(186,105,0,1),inset 0 1px 0px rgba(186,105,0,1),inset 0 -1px 0px rgba(189,121,32,1),0 1px 0px rgba(255,255,255,0.25); text-shadow: 0 1px rgba(255,255,255,0.6);
+}
+#swapper_login .swap_logoSoftware ul li .select_box select{background-color: #f2e3c5; border: none; width:100px; font-size:11px; color:#838383; padding-left:0px; float:left; height: 18px; }
+#swapper_login .swap_logoSoftware ul li .select_box select:focus{color:#000;}
+#swapper_login .swap_logoSoftware ul li .select_box:focus{color:#000; background-position: 0 -22px;}
+#swapper_login .swap_logoSoftware ul li .label{ color:#fff; text-shadow: 0px 1px rgba(0,0,0,0.3); padding: 0 0 4px 3px;}
+#swapper_login .swap_logoSoftware ul li .LicensedType
+{
+    color:#858585; float:left; padding:4px 7px 5px 7px; width:91px;
+    background: linear-gradient(top, #e6d6b6 0%, #e6d6b6 100%);background:-moz-linear-gradient(top, #e6d6b6 0%, #fff1d6 100%);background:-webkit-linear-gradient(top, #e6d6b6 0%, #fff1d6 100%);background:-ms-linear-gradient(top, #e6d6b6 0%, #fff1d6 100%);background:-o-linear-gradient(top, #e6d6b6 0%, #fff1d6 100%); border-radius:2px;
+    box-shadow: inset 1px 0px 0px rgba(186,105,0,1),inset -1px 0px 0px rgba(186,105,0,1),inset 0 1px 0px rgba(186,105,0,1),inset 0 -1px 0px rgba(189,121,32,1),0 1px 0px rgba(255,255,255,0.25); text-shadow: 0 1px rgba(255,255,255,0.6);
+    }
+#swapper_login .swap_logoSoftware ul li .LicensedType a{ text-decoration: none; color:#969696}
+#swapper_login .swap_logoSoftware ul li .LicensedType a:hover{ color:#000;}
+
+#swapper_login .version{ color:#02387f; float:left; width:auto; margin-left: 15px; margin-top: 5px;}
+#swapper_login .copy{ color:#454545; float:right; width:auto;font-size: 11px; position: absolute; left: 35px; bottom: 35px; }
+#swapper_login .copy a{ text-decoration: none; color:#454545;}
+#swapper_login .copy a:hover{ text-decoration: underline; color:#01549b;}
+/*----------------message--------------------*/
+.boxmain_mes{width:426px;height:auto;margin-top:-17px;padding-left: 30px;margin-left: 7px;font-size: 14px;background: url(../../ImagesLogin/bg_war.png) repeat;;color: #000000;border: 1px solid #dd3c10;}
+.img_war {position: relative;top: 1px;left: -13px;}

@@ -1,0 +1,212 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Home.master.cs" Inherits="page.page_Home" %>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Education Center</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+
+    <%--CSS--%>
+    <link href="../css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../css/style.css" rel="stylesheet" />
+    <link href="../jquery.bxslider/jquery.bxslider.css" rel="stylesheet" />
+    <link href="../css/hover/style.css" rel="stylesheet" />
+    <%--jQuery--%>
+    <script src="../js/jquery-2.1.3.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/modernizr.js"></script>
+
+    <link href="../owl.carousel/owl-carousel/owl.carousel.css" rel="stylesheet" />
+    <link href="../owl.carousel/owl-carousel/owl.theme.css" rel="stylesheet" />
+    <script src="../owl.carousel/owl-carousel/owl.carousel.js"></script>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#owl-demo").owlCarousel({
+                navigation: true, // Show next and prev buttons
+                slideSpeed: 300,
+                paginationSpeed: 400,
+                singleItem: true,
+                autoPlay: true,
+                pagination: false,
+                responsive: true,
+                // "singleItem:true" is a shortcut for:
+                // items : 1, 
+                itemsDesktop: true,
+                itemsDesktopSmall: true,
+                itemsTablet: true,
+                itemsMobile: true
+            });
+            $("#owl-demo-right").owlCarousel({
+                navigation: false, // Show next and prev buttons
+                slideSpeed: 300,
+                paginationSpeed: 400,
+                singleItem: true,
+                autoPlay: true,
+                pagination: false,
+                responsive: true,
+                // "singleItem:true" is a shortcut for:
+                // items : 1, 
+                itemsDesktop: true,
+                itemsDesktopSmall: true,
+                itemsTablet: true,
+                itemsMobile: true
+
+            });
+            if (Modernizr.touch) {
+                // show the close overlay button
+                $(".close-overlay").removeClass("hidden");
+                // handle the adding of hover class when clicked
+                $(".img").click(function() {
+                    if (!$(this).hasClass("hover")) {
+                        $(this).addClass("hover");
+                    }
+                });
+                // handle the closing of the overlay
+                $(".close-overlay").click(function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    if ($(this).closest(".img").hasClass("hover")) {
+                        $(this).closest(".img").removeClass("hover");
+                    }
+                });
+            } else {
+                // handle the mouseenter functionality
+                $(".img").mouseenter(function() {
+                        $(this).addClass("hover");
+                    })
+                    // handle the mouseleave functionality
+                    .mouseleave(function() {
+                        $(this).removeClass("hover");
+                    });
+            }
+        });
+    </script>
+    <style>
+        #owl-demo .item img{
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <form id="FormMasterHome" runat="server">
+        <%--<div class="container-fluid">--%>
+            <div>
+                <div id="header" class="row fix-menu">
+                    <%--<div class="col-sm-12 col-md-6 col-lg-4">
+                        <img src="../img/crop.png" />
+                    </div>--%>
+                    <%=_htmlTitilePage %>
+                   <%-- <div class="col-sm-12 col-md-6 col-lg-4">
+                        <a href="#"><img src="../img/logo2.png" style="margin-left: 80px; margin-top: 14px;" /></a>
+                    </div>
+                    <div id="hide">
+                        <img src="../img/DuongMinh.png" style="margin-left: -175px; margin-top: 35px;" />
+                    </div>--%>
+                </div>
+            </div>
+            
+            <style type="text/css">
+
+                @media all and (max-width: 991px) {
+                    #hide {
+                        display:none;
+                    }
+                }
+            </style>
+
+            <%--Menu--%>
+            <nav class="nav navbar-default menu">
+              <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header active">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand glyphicon glyphicon-home" style="margin-left: 15px;" href="/"></a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="margin-left: 0; margin-right: 0;">
+                   <ul class="nav navbar-nav">
+                    <%--<li>
+                        <a href="#">
+                            Thiết kế website 
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            About Us
+                        </a>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                      <ul class="dropdown-menu" role="menu">
+                        <li>
+                            <a href="#">
+                                Item 1
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Item 2
+                            </a>
+                        </li>
+                      </ul>
+                    </li>--%>
+                       <%=_htmCatalog %>
+                  </ul>
+                    
+                   <div class="nav navbar-form navbar-right" style="margin-right: 0">
+                       <asp:Button ID="btnLanVn" runat="server" CssClass="btn btn-primary btn-sm vn-button" Text="" OnClick="btnLanVn_Click" />
+                       <asp:Button ID="btnLanEn" runat="server" CssClass="btn btn-primary btn-sm en-button" Text="" OnClick="btnLanEn_Click" />
+                    </div>
+                </div><!-- /.navbar-collapse -->
+              </div>
+            </nav>
+            <%--End Menu--%>
+            
+        <%--SlideShow--%>
+            <div style="margin: 8px 0 0 0;">
+                <div class="container body-content">
+                    <div id="owl-demo" class="owl-carousel owl-theme">
+                      <div class="item"><img src="/img/1.jpg" alt="The Last of us"></div>
+                      <div class="item"><img src="/img/2.jpg" alt="GTA V"></div>
+                      <div class="item"><img src="/img/3.jpg" alt="Mirror Edge"></div>
+                    </div>
+                </div>
+            </div>
+        <%--End Slideshow--%>
+        
+        <div class="clear"></div>
+
+        <asp:ContentPlaceHolder id="CplHome" runat="server"/>
+        <div class="clear"></div>
+        <%--Footer--%>
+            <div>
+                <div class="footer col-sm-6 col-md-4 col-lg-3">
+                    <div class="container body-content" style="background: transparent">
+                    <%--<p style="  font-size: 11px;color: #777;  float: left;line-height: 18px;">Copyright © 2015 Duong Minh Language School. All rights reserved.</p>--%>
+                        <%=_htmlFooterPage %>
+                    </div>
+                </div>
+                <div class="footer1 col-sm-6 col-md-4 col-lg-3">
+                    <div class="container body-content" style="background: transparent">
+                    <%--<p style="padding-top: 7px">Copyright © 2015 Duong Minh Language School. All rights reserved.</p>--%>
+                    <%=_htmlFooterBottomPage %>
+                    </div>
+                </div>
+            </div>
+        <%--End Footer--%>
+        <%--</div>--%>
+    </form>
+</body>
+</html>
