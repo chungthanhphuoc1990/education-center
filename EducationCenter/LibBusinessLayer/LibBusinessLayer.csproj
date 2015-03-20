@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E9438268-797D-4945-A4C3-7BC9DE2FF44F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LibBusinessLayer</RootNamespace>
+    <AssemblyName>LibBusinessLayer</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BLL_Adv.cs" />
+    <Compile Include="BLL_CatalogMain.cs" />
+    <Compile Include="BLL_CatalogPrarent_.cs" />
+    <Compile Include="BLL_CatalogPrarent_Child_.cs" />
+    <Compile Include="BLL_Catalog_Main_Child.cs" />
+    <Compile Include="BLL_Comment.cs" />
+    <Compile Include="BLL_FunctionPage.cs" />
+    <Compile Include="BLL_Gallery.cs" />
+    <Compile Include="BLL_Gallery_Detail.cs" />
+    <Compile Include="BLL_GroupUser.cs" />
+    <Compile Include="BLL_Intro.cs" />
+    <Compile Include="BLL_ModuleMain.cs" />
+    <Compile Include="BLL_ModuleParrent.cs" />
+    <Compile Include="BLL_News.cs" />
+    <Compile Include="BLL_News_Child.cs" />
+    <Compile Include="BLL_Notify.cs" />
+    <Compile Include="BLL_NotifyChild.cs" />
+    <Compile Include="BLL_NotifyDetail.cs" />
+    <Compile Include="BLL_Page.cs" />
+    <Compile Include="BLL_Page_Setting.cs" />
+    <Compile Include="BLL_User.cs" />
+    <Compile Include="BLL_Utilities.cs" />
+    <Compile Include="BLL_Utilities_Detail.cs" />
+    <Compile Include="BLL_Video.cs" />
+    <Compile Include="BLL_Video_Child.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LibDataLayer\LibDataLayer.csproj">
+      <Project>{5db22a98-8d48-4279-b590-1a8ba1e9e0e6}</Project>
+      <Name>LibDataLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
