@@ -45,6 +45,13 @@ namespace page
                     DataPagerEn.Visible = true;
                 }
             }
+            else
+            {
+                GetNewsTitileVn(Request.Params["id"]);
+                _htmlGetMenu = GetMenuVn();
+                ListViewAllEn.Visible = false;
+                DataPagerEn.Visible = false;
+            }
         }
         protected void ListViewAll_ItemDataBound(object sender, ListViewItemEventArgs e)
         {

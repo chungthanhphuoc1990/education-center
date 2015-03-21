@@ -18,7 +18,7 @@ namespace page
         protected void Page_Load(object sender, EventArgs e)
         {
             var cookie = Request.Cookies["CurrentLanguage"];
-            _htmlGetMenu = GetMenuVn();
+           
             if (!IsPostBack && cookie != null && cookie.Value != null && Request.Params["id"] != null)
             {
                 _htmlDetail = GetDetailVn(Request.Params["id"]);
@@ -32,6 +32,11 @@ namespace page
                     _htmlDetail = GetDetailEn(Request.Params["id"]);
                     _htmlGetMenu = GetMenuEn();
                 }
+            }
+            else
+            {
+                _htmlDetail = GetDetailVn(Request.Params["id"]);
+                _htmlGetMenu = GetMenuVn();
             }
         }
         #endregion
