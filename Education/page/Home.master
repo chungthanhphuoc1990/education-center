@@ -24,6 +24,9 @@
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
     <script type="text/javascript">
+        function pageLoad() {
+            $('[data-toggle="tooltip"]').tooltip()
+        }
         $(document).ready(function() {
             $("#owl-demo").owlCarousel({
                 navigation: true, // Show next and prev buttons
@@ -95,6 +98,7 @@
 </head>
 <body>
     <form id="FormMasterHome" runat="server">
+        <asp:ScriptManager ID="ScriptManagerHome" runat="server"/>
         <%--<div class="container-fluid">--%>
             <div>
                 <div id="header" class="row fix-menu">
@@ -178,9 +182,10 @@
             <div style="margin: 8px 0 0 0;">
                 <div class="container body-content">
                     <div id="owl-demo" class="owl-carousel owl-theme">
-                      <div class="item"><img src="/img/1.jpg" alt="The Last of us"></div>
+                      <%--<div class="item"><img src="/img/1.jpg" alt="The Last of us"></div>
                       <div class="item"><img src="/img/2.jpg" alt="GTA V"></div>
-                      <div class="item"><img src="/img/3.jpg" alt="Mirror Edge"></div>
+                      <div class="item"><img src="/img/3.jpg" alt="Mirror Edge"></div>--%>
+                      <%=_htmSlideShow %>
                     </div>
                 </div>
             </div>

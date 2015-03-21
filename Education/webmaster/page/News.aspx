@@ -104,7 +104,7 @@
                         <th style="text-align: center;vertical-align:middle;width: 15%">Số thứ tự</th>
                         <th style="text-align: center;vertical-align:middle;width: 10%">Trạng thái</th>
                         <th style="text-align: center;vertical-align:middle;width: 10%">Tin nóng</th>
-                        <th style="text-align: center;vertical-align:middle;width: 10%">Trang chủ</th>
+                        <th style="text-align: center;vertical-align:middle;width: 10%">Slide show</th>
                         <th style="text-align: center;vertical-align:middle; width: 15%" id="function" runat="server">Thao tác</th>
                     </tr>
                 </thead>

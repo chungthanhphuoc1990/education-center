@@ -11,6 +11,7 @@ namespace page
         protected string _htmlTitilePage = string.Empty;
         protected string _htmlFooterPage = string.Empty;
         protected string _htmlFooterBottomPage = string.Empty;
+        protected string _htmSlideShow = string.Empty;
         #endregion
 
         #region[Controller]
@@ -21,6 +22,7 @@ namespace page
             _htmlTitilePage = GetLogoVn();
             _htmlFooterPage = GetFooterTop();
             _htmlFooterBottomPage = GetFooterBottom();
+            _htmSlideShow = GetSlide();
             var cookie = Request.Cookies["CurrentLanguage"];
             if (!IsPostBack && cookie != null && cookie.Value != null)
             {
@@ -302,6 +304,32 @@ namespace page
                 _html += "<p style='padding-top: 7px'>";
                 _html += _dtGetFooterBottom.Rows[0]["Page_Footer"].ToString();
                 _html += "</p>";
+            }
+            return _html;
+        }
+        private string GetSlide()
+        {
+            string _html = string.Empty;
+            var _clsGetSlide = new BllNews();
+            var _dtGetSlide = _clsGetSlide.GetNewsHomePageSlide(string.Empty);
+            if (_dtGetSlide != null && _dtGetSlide.Rows.Count > 0)
+            {
+                for (int i = 0; i < _dtGetSlide.Rows.Count; i++)
+                {
+                    if ((bool)_dtGetSlide.Rows[i]["IsSlide"])
+                    {
+                        _html += "<div class='item'>";
+                            _html += "<a href='/detail/" + _dtGetSlide.Rows[i]["Friendly_Url_Vn"] + "'title='" +
+                                     _dtGetSlide.Rows[i]["Titile_Vn"] +
+                                     "' target='_blank'>";
+                            _html += "<img src='" + _dtGetSlide.Rows[i]["Img"] + "' style='width: " +
+                                     _dtGetSlide.Rows[i]["Width"] + "%" + ";height:" +
+                                     _dtGetSlide.Rows[i]["Height"] + "px'/>";
+
+                            _html += "</a>";
+                        _html += "</div>";
+                    }
+                }
             }
             return _html;
         }

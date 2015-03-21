@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/page/Home.master" AutoEventWireup="true" CodeFile="titile.aspx.cs" Inherits="page_titile" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+<asp:Content ID="Content2" ContentPlaceHolderID="CplHome" Runat="Server">
 <div class="container body-content">
     <div class="col-xs-12 col-md-3 right-main-titile">
         <ul class="nav nav-pills nav-stacked panel-left">

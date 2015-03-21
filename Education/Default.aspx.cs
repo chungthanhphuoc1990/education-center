@@ -9,190 +9,272 @@ public partial class _Default : System.Web.UI.Page
     protected string _htmSlideShow = string.Empty;
     protected string _htmPage = string.Empty;
     protected string _htmlUtilities = string.Empty;
-    readonly DateTime t1 = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy"));//Thời gian hệ thống
+    protected string _htmlNotify = string.Empty;
+    protected string _htmlNews = string.Empty;
+    private const int _maxLength = 287;
+    private const int _maxLengthTitile = 41;
+    //readonly DateTime t1 = Convert.ToDateTime(DateTime.Now.ToString("dd-MM-yyyy"));//Thời gian hệ thống
     #endregion
 
     #region[Controller]
     protected void Page_Load(object sender, EventArgs e)
     {
-        //_htmNewsMain = GetNews();
-        //_htmSlideShow = GetSlide();
         _htmlUtilities = GetUtilitiesVn();
+        _htmPage = GetPageSetting();
+        _htmlNotify = GetNotify();
+        _htmlNews = GetNewsVn();
         var cookie = Request.Cookies["CurrentLanguage"];
         if (!IsPostBack && cookie != null && cookie.Value != null)
         {
-            _htmlUtilities = cookie.Value == "vn" ? GetUtilitiesVn() : GetUtilitiesEn();
+            if (cookie.Value == "vn")
+            {
+                _htmlUtilities = GetUtilitiesVn();
+                _htmlNews = GetNewsVn();
+            }
+            else
+            {
+                _htmlUtilities = GetUtilitiesEn();
+                _htmlNews = GetNewsEn();
+            }
         }
-        _htmPage = GetPageSetting();
     }
     #endregion
 
     #region[Method]
-    private string GetNews()
+    private string GetNotify()
+    {
+        var _html = string.Empty;
+        var _clsGetNotify = new BllNotify();
+        var _clsGetNotifyDetail = new BllNotifyDetail();
+        var _dtGetNotify = _clsGetNotify.GetNotifyHomePage(string.Empty);
+        if (_dtGetNotify != null && _dtGetNotify.Rows.Count > 0)
+        {
+            for (int i = 0; i < _dtGetNotify.Rows.Count; i++)
+            {
+                if(i==1)
+                    break;
+                _html += "<tr>";
+                var _dtGetNotifyDetail =
+                    _clsGetNotifyDetail.GetNotifyDetailHomePage(int.Parse(_dtGetNotify.Rows[i]["ID_Notify"].ToString()));
+                if (_dtGetNotifyDetail != null && _dtGetNotifyDetail.Rows.Count > 0)
+                {
+                    _html += "<td style='width: 30%;vertical-align: top;text-align: center'>";
+                    _html += "<div class='img'>";
+                    _html +=
+                        "<img src='" + _dtGetNotifyDetail.Rows[0]["Img"] +
+                        "' class='img-thumbnail' style='width: 100%;height: 180px;' />";
+                    _html += "<div class='overlay'>";
+                    if (_dtGetNotifyDetail.Rows[0]["Url"].ToString() == string.Empty
+                        || _dtGetNotifyDetail.Rows[1]["Url"] == DBNull.Value)
+                    {
+                        _html += "<a href='/intro/" + _dtGetNotifyDetail.Rows[0]["Friendly_Url_Vn"] + "' class='expand'>+</a>";
+                    }
+                    else
+                    {
+                        _html += "<a href='" + _dtGetNotifyDetail.Rows[0]["Url"] + "' class='expand'>+</a>";
+                    }
+                    _html += "</div>";
+                    _html += "</div>";
+                    _html += "</td>";
+
+                    _html += "<td style='width: 70%;vertical-align: top;text-align: center' colspan='3'>";
+                    _html += "<div class='img'>";
+                    _html +=
+                        "<img src='" + _dtGetNotifyDetail.Rows[1]["Img"] +
+                        "' class='img-thumbnail' style='width: 100%;height: 180px;' />";
+                    _html += "<div class='overlay'>";
+                    if (_dtGetNotifyDetail.Rows[1]["Url"].ToString() == string.Empty
+                        || _dtGetNotifyDetail.Rows[1]["Url"] == DBNull.Value)
+                    {
+                        _html += "<a href='/intro/" + _dtGetNotifyDetail.Rows[1]["Friendly_Url_Vn"] + "' class='expand'>+</a>";
+                    }
+                    else
+                    {
+                        _html += "<a href='" + _dtGetNotifyDetail.Rows[1]["Url"] + "' class='expand'>+</a>";
+                    }
+                    _html += "</div>";
+                    _html += "</div>";
+                    _html += "</td>";
+                    
+                }
+                _html += "</tr>";
+            }
+            for (int k = 1; k < _dtGetNotify.Rows.Count; k++)
+            {
+                var _dtGetNotifyDetailTwo =
+                    _clsGetNotifyDetail.GetNotifyDetailHomePage(int.Parse(_dtGetNotify.Rows[k]["ID_Notify"].ToString()));
+                _html += "<tr>";
+                for (int j = 0; j < _dtGetNotifyDetailTwo.Rows.Count; j++)
+                {
+                    _html += "<td style='width: 33.3%;vertical-align: top;text-align: center'>";
+                    _html += "<div class='img'>";
+                    _html +=
+                        "<img src='" + _dtGetNotifyDetailTwo.Rows[j]["Img"] +
+                        "' class='img-thumbnail' style='width: 100%;height: 180px;' />";
+                    _html += "<div class='overlay'>";
+                    if (_dtGetNotifyDetailTwo.Rows[j]["Url"].ToString() == string.Empty
+                        || _dtGetNotifyDetailTwo.Rows[j]["Url"] == DBNull.Value)
+                    {
+                        _html += "<a href='/intro/" + _dtGetNotifyDetailTwo.Rows[j]["Friendly_Url_Vn"] + "' class='expand'>+</a>";
+                    }
+                    else
+                    {
+                        _html += "<a href='" + _dtGetNotifyDetailTwo.Rows[j]["Url"] + "' class='expand'>+</a>";
+                    }
+                    _html += "</div>";
+                    _html += "</div>";
+                    _html += "</td>";
+                }
+                _html += "</tr>";
+            }
+        }
+        return _html;
+    }
+    private string GetNewsVn()
     {
         string _html = string.Empty;
-        var _clsGetCatalogMain = new BllCatalogMain();
-        var _clsGetCatalogParrent = new BllCatalogPrarent();
         var _clsGetNews = new BllNews();
-        var _dtGetCatalogMain = _clsGetCatalogMain.GetCatalogMainHomePage(string.Empty);
-        if (_dtGetCatalogMain != null && _dtGetCatalogMain.Rows.Count > 0)
+        var _dtGetNews = _clsGetNews.GetNews(string.Empty);
+        if (_dtGetNews != null && _dtGetNews.Rows.Count > 0)
         {
-            for (int i = 0; i < _dtGetCatalogMain.Rows.Count; i++)
+            if ((bool)_dtGetNews.Rows[0]["IsHot"] && (bool)_dtGetNews.Rows[0]["IsActive"])
             {
-                var _dtGetCatalogParrent =
-                    _clsGetCatalogParrent.GetCatalogParrentHomePage(int.Parse(_dtGetCatalogMain.Rows[i]["ID_CatMain"].ToString()));
+                _html += "<h3>Tin nỗi bật</h3>";
+                _html += "<div class='content-news'>";
+                    _html += "<div class='col-md-3'>";
+                    _html += "<img src='" + _dtGetNews.Rows[0]["Img_Thumb"] + "' style='width: " +
+                         _dtGetNews.Rows[0]["Width_Thumb"] + "%" + ";height:" +
+                         _dtGetNews.Rows[0]["Height_Thumb"] + "px' class='img-thumbnail'/>";
+                    _html += "</div>";
 
-                if (_dtGetCatalogParrent != null && _dtGetCatalogParrent.Rows.Count > 0)
-                {
-                    if ((bool)_dtGetCatalogMain.Rows[i]["IsShow"])
-                    {
-                        _html += "<div class='boxmain'>";//Box Main
-                        _html += "<div style='position:relative;padding-top:15px;clear:both'>";//Box position
-                        for (int j = 0; j < _dtGetCatalogParrent.Rows.Count; j++)
-                        {
-                            var _dtGetNews = _clsGetNews.GetNewsHomePage(string.Empty,
-                                int.Parse(_dtGetCatalogParrent.Rows[j]["ID_CatPrarent"].ToString()));
-                            if (j == 1)
-                                break;
-                            _html += "<div class='bg_topic_level_two'>";//Box bg_topic_level_two
-                            _html += _dtGetCatalogMain.Rows[i]["Catalog_Main_Titile_Vn"] + " » ";
-                            _html += _dtGetCatalogParrent.Rows[j]["Catalog_Prarent_Titile_Vn"].ToString();
-                            _html += "</div>";//Đóng bg_topic_level_two
-
-                            if (_dtGetNews != null && _dtGetNews.Rows.Count > 0)
+                    _html += "<div class='col-md-9'>";
+                        _html += "<div class='titile-news'>";
+                            _html += _dtGetNews.Rows[0]["Titile_Vn"].ToString();
+                            _html += "<p class='short-content-news'>";
+                            if (_dtGetNews.Rows[0]["ShortContent_Vn"].ToString().Length > _maxLength)
                             {
-                                _html += "<div class='newsitem topnewsitem first'>";//newsitem topnewsitem first
-                                _html += "<div class='news_title'>";
-                                _html += "<a href='/detail/" + _dtGetNews.Rows[0]["Friendly_Url_Vn"] + "'>";
-                                //if ((bool)_dtGetNews.Rows[0]["IsHot"])
-                                //{
-                                //    //_html += "<img src=images/new.gif /> ";
-                                //    _html += _dtGetNews.Rows[0]["Titile_Vn"] + " ";
-                                //}
-                                //else
-                                //{
-                                //    _html += _dtGetNews.Rows[0]["Titile_Vn"] + " ";
-                                //}
-                                if (t1 < Convert.ToDateTime(_dtGetNews.Rows[0]["DateEnd"].ToString()))
-                                {
-                                    _html += "<img src=../images/new.gif /> ";
-                                    _html += _dtGetNews.Rows[0]["Titile_Vn"] + " ";
-                                }
-                                else
-                                {
-                                    _html += _dtGetNews.Rows[0]["Titile_Vn"] + " ";
-                                }
-                                _html += "</a>";
-                                _html += "<span class='template_datebegin'>";
-                                _html += String.Format("{0:dd-MM-yyyy}", _dtGetNews.Rows[0]["DateBegin"]);
-                                _html += "</span>";
-                                _html += "</div>";
-
-                                _html += "<div style='margin-top:5px;margin-bottom:5px;text-align:center;'>";
-                                if (String.IsNullOrEmpty(_dtGetNews.Rows[0]["Img_Thumb"].ToString())
-                                                         ||
-                                                         _dtGetNews.Rows[0]["Img_Thumb"].ToString() ==
-                                                         DBNull.Value.ToString())
-                                {
-                                    _html += "<img src='Upload/no_photo.png'style='width:220px;height:220px'/>";
-                                }
-                                else
-                                {
-                                    _html += "<img src='" + _dtGetNews.Rows[0]["Img_Thumb"] + "' style='width: " +
-                                        _dtGetNews.Rows[0]["Width_Thumb"] + "px" + ";height:" +
-                                        _dtGetNews.Rows[0]["Height_Thumb"] + "px'/>";
-                                }
-                                _html += "</div>";
-                                _html += "<div class='news_content'>";
-                                _html += _dtGetNews.Rows[0]["ShortContent_Vn"].ToString();
-                                _html += "</div>";
-                                _html += "</div>";//Đóng newsitem topnewsitem first
-                                //_html += "<div style='clear: both'></div>";
-                                _html += "<div class='newsitem topnewsitem'>";//newsitem topnewsitem
-                                for (int k = 1; k < _dtGetNews.Rows.Count; k++)
-                                {
-                                    if (k == 8)
-                                        break;
-                                    _html += "<div class='news_title_'>";
-                                    _html += "<img src='images/media_dot_.gif' style='border: 0' /> ";
-                                    _html += "<a href='/detail/" + _dtGetNews.Rows[k]["Friendly_Url_Vn"] + "'>";
-
-                                    if (t1 < Convert.ToDateTime(_dtGetNews.Rows[k]["DateEnd"].ToString()))
-                                    {
-                                        _html += "<img src=../images/new.gif /> ";
-                                        _html += _dtGetNews.Rows[k]["Titile_Vn"] + " ";
-                                    }
-                                    else
-                                    {
-                                        _html += _dtGetNews.Rows[k]["Titile_Vn"] + " ";
-                                    }
-                                    _html += "</a>";
-                                    _html += "<span class='template_datebegin'>";
-                                    _html += String.Format("{0:dd-MM-yyyy}", _dtGetNews.Rows[k]["DateBegin"]);
-                                    _html += "</span>";
-                                    _html += "</div>";
-                                }
-
-                                _html += "</div>";//Đóng newsitem topnewsitem
-                                //_html += "<div style='clear: both'></div>"; 
-                                //_html += "<div style='width: 100%;height: 100%;'>";
-                                //_html += "<span class='span-order-news'>Các tin cùng loại</span>";
-                                //    _html += "<table style='width:100%;'>";
-                                //var _dtCategoryOrder =
-                                //    _clsGetCatalogParrent.GetCatalogParrentHomePage(
-                                //        int.Parse(_dtGetCatalogMain.Rows[i]["ID_CatMain"].ToString()));
-                                //for (int h = 1; h < _dtCategoryOrder.Rows.Count; h++)
-                                //{
-                                //    if (h == 4)
-                                //        break;
-                                //    _html += "<tr>";
-                                //    _html += "<td class='td-border'>";
-                                //    _html += "<div class='div-titile'>";
-                                //    _html += "<a href='/news/" + _dtCategoryOrder.Rows[h]["Friendly_Url_Vn"] + "'>";
-                                //    _html += " » ";
-                                //    _html += _dtCategoryOrder.Rows[h]["Catalog_Prarent_Titile_Vn"] +
-                                //              "</a>";
-                                //    _html += "</div>";
-                                //    _html += "</td>";
-                                //    _html += "</tr>";
-                                //}
-
-                                //    _html += "</table>";
-                                //_html += "</div>";
+                                _html += _dtGetNews.Rows[0]["ShortContent_Vn"].ToString().Substring(0, _maxLength) +
+                                         "....";
                             }
+                            else
+                            {
+                                _html += _dtGetNews.Rows[0]["ShortContent_Vn"].ToString();
+                            }
+                            _html += "</p>";
+
+                            _html += "<span class='date-begin-news'>";
+                                _html += "Ngày đăng : " + String.Format("{0:dd-MM-yyyy}", _dtGetNews.Rows[0]["DateBegin"]);
+                            _html += "</span>";
+
+                            _html += "<span class='more-detail'>";
+                                _html += "<a href='/intro/" + _dtGetNews.Rows[0]["Friendly_Url_Vn"] + "' class='more-detail'>Chi tiết</a>";
+                            _html += "</span>";
+                        _html += "</div>";
+                    _html += "</div>";
+                    _html += "<div class='clear'></div>";
+                _html += "</div>";
+
+                _html += "<hr class='hr'/>";
+                for (int i = 1; i < _dtGetNews.Rows.Count; i++)
+                {
+                    if ((bool) _dtGetNews.Rows[i]["IsHot"] && (bool) _dtGetNews.Rows[i]["IsActive"])
+                    {
+                        _html += "<div class='col-md-4'>";
+                        _html += "<img src='" + _dtGetNews.Rows[i]["Img_Thumb"] + "' style='width: " +
+                                 _dtGetNews.Rows[i]["Width_Thumb"] + "%" + ";height:" +
+                                 _dtGetNews.Rows[i]["Height_Thumb"] +
+                                 "px;padding: 0;margin: 0;text-align: center' class='img-thumbnail'/>";
+                        _html += "<div class='box-news'>";
+                        if (_dtGetNews.Rows[i]["Titile_Vn"].ToString().Length > _maxLengthTitile)
+                        {
+                            _html += "<a data-toggle='tooltip' data-placement='top' href='/intro/" + _dtGetNews.Rows[i]["Friendly_Url_Vn"] + "' class='box-news' title='" + _dtGetNews.Rows[i]["Titile_Vn"] + "'>";
+                            _html += _dtGetNews.Rows[i]["Titile_Vn"].ToString().Substring(0,_maxLengthTitile) + "...";
+                            _html += "</a>";
                         }
-                        _html += "</div>";//Đóng Box position
-                        _html += "</div>";//Đóng box main
+                        else
+                        {
+                            _html += "<a href='/intro/" + _dtGetNews.Rows[i]["Friendly_Url_Vn"] + "' class='box-news'>";
+                            _html += _dtGetNews.Rows[i]["Titile_Vn"].ToString();
+                            _html += "</a>";
+                        }
+                        _html += "</div>";
+                        _html += "</div>";
                     }
                 }
             }
         }
         return _html;
     }
-    private string GetSlide()
+    private string GetNewsEn()
     {
         string _html = string.Empty;
-        var _clsGetSlide = new BllNews();
-        var _dtGetSlide = _clsGetSlide.GetNewsHomePageSlide(string.Empty);
-        if (_dtGetSlide != null && _dtGetSlide.Rows.Count > 0)
+        var _clsGetNews = new BllNews();
+        var _dtGetNews = _clsGetNews.GetNews(string.Empty);
+        if (_dtGetNews != null && _dtGetNews.Rows.Count > 0)
         {
-            for (int i = 0; i < _dtGetSlide.Rows.Count; i++)
+            if ((bool)_dtGetNews.Rows[0]["IsHot"] && (bool)_dtGetNews.Rows[0]["IsActive"])
             {
-                if ((bool)_dtGetSlide.Rows[i]["IsSlide"])
-                {
-                    _html += "<div class='slide'>";
-                    _html += "<a href='/detail/" + _dtGetSlide.Rows[i]["Friendly_Url_Vn"] + "'title='" +
-                             _dtGetSlide.Rows[i]["Titile_Vn"] +
-                             "' target='_blank'>";
-                    _html += "<img src='" + _dtGetSlide.Rows[i]["Img"] + "' style='width: " +
-                             _dtGetSlide.Rows[i]["Width"] + "px" + ";height:" +
-                             _dtGetSlide.Rows[i]["Height"] + "px'/>";
+                _html += "<h3>Hot News</h3>";
+                _html += "<div class='content-news'>";
+                _html += "<div class='col-md-3'>";
+                _html += "<img src='" + _dtGetNews.Rows[0]["Img_Thumb"] + "' style='width: " +
+                     _dtGetNews.Rows[0]["Width_Thumb"] + "%" + ";height:" +
+                     _dtGetNews.Rows[0]["Height_Thumb"] + "px' class='img-thumbnail'/>";
+                _html += "</div>";
 
-                    _html += "</a>";
-                    _html += "<div class='captions' style='bottom:0'>";
-                    _html += "<p>" + _dtGetSlide.Rows[i]["Titile_Vn"] + "</p>";
-                    _html += "</div>";
-                    _html += "</div>";
+                _html += "<div class='col-md-9'>";
+                _html += "<div class='titile-news'>";
+                _html += _dtGetNews.Rows[0]["Titile_En"].ToString();
+                _html += "<p class='short-content-news'>";
+                if (_dtGetNews.Rows[0]["ShortContent_En"].ToString().Length > _maxLength)
+                {
+                    _html += _dtGetNews.Rows[0]["ShortContent_En"].ToString().Substring(0, _maxLength) +
+                             "....";
+                }
+                else
+                {
+                    _html += _dtGetNews.Rows[0]["ShortContent_Vn"].ToString();
+                }
+                _html += "</p>";
+
+                _html += "<span class='date-begin-news'>";
+                _html += "Date Post : " + String.Format("{0:dd-MM-yyyy}", _dtGetNews.Rows[0]["DateBegin"]);
+                _html += "</span>";
+
+                _html += "<span class='more-detail'>";
+                _html += "<a href='/intro/" + _dtGetNews.Rows[0]["Friendly_Url_En"] + "' class='more-detail'>View Detail</a>";
+                _html += "</span>";
+                _html += "</div>";
+                _html += "</div>";
+                _html += "<div class='clear'></div>";
+                _html += "</div>";
+
+                _html += "<hr class='hr'/>";
+                for (int i = 1; i < _dtGetNews.Rows.Count; i++)
+                {
+                    if ((bool) _dtGetNews.Rows[i]["IsHot"] && (bool) _dtGetNews.Rows[i]["IsActive"])
+                    {
+                        _html += "<div class='col-md-4'>";
+                        _html += "<img src='" + _dtGetNews.Rows[0]["Img_Thumb"] + "' style='width: " +
+                                 _dtGetNews.Rows[i]["Width_Thumb"] + "%" + ";height:" +
+                                 _dtGetNews.Rows[i]["Height_Thumb"] +
+                                 "px;padding: 0;margin: 0;text-align: center' class='img-thumbnail'/>";
+                        _html += "<div class='box-news'>";
+                        if (_dtGetNews.Rows[i]["Titile_En"].ToString().Length > _maxLengthTitile)
+                        {
+                            _html += "<a data-toggle='tooltip' data-placement='top' href='/intro/" + _dtGetNews.Rows[i]["Friendly_Url_En"] + "' class='box-news' title='" + _dtGetNews.Rows[i]["Titile_En"] + "'>";
+                            _html += _dtGetNews.Rows[i]["Titile_En"].ToString().Substring(0, _maxLengthTitile) + "...";
+                            _html += "</a>";
+                        }
+                        else
+                        {
+                            _html += "<a href='/intro/" + _dtGetNews.Rows[i]["Friendly_Url_En"] + "' class='box-news'>";
+                            _html += _dtGetNews.Rows[i]["Titile_En"].ToString();
+                            _html += "</a>";
+                        }
+                        _html += "</div>";
+                        _html += "</div>";
+                    }
                 }
             }
         }

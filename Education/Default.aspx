@@ -54,7 +54,7 @@
         <div id="effect-1" class="effects clearfix">
             <table class="table-responsive" style="width: 100%;border: none">
                 <tbody>
-                    <tr>
+                    <%--<tr>
                         <td style="width: 30%;vertical-align: top;text-align: center">
                             <div class="img">
                                 <img src="../upload/Mo_TTKT.png" class="img-thumbnail" style="width: 100%;height: 180px;" />
@@ -101,27 +101,28 @@
                                 </div>
                             </div>
                         </td>
-                    </tr>
+                    </tr>--%>
+                    <%=_htmlNotify %>
                 </tbody>
             </table>
          </div>
         <div class="col-md-12 news-main">
-            <h3>Tin nỗi bật</h3>
+            <%--<h3>Tin nỗi bật</h3>
             <div class="content-news">
                 <div class="col-md-3">
                     <img src="../upload/Mo_CNHT1.png" style="width: 100%;height: 145px" class="img-thumbnail"/>
                 </div>
                 <div class="col-md-9">
-                    <div class="titile-news">
+                    <div class='titile-news'>
                         KẾT QUẢ CUỘC THI THIẾT KẾ THIỆP CHÚC TẾT MỪNG XUÂN ẤT MÙI 2015
-                        <p class="short-content-news">
+                        <p class='short-content-news'>
                             NHỮNG HÌNH ẢNH PHÁT THƯỞNG CHO CÁC LỚP ĐOẠT GIẢI CỦA CUỘC THI THIẾT KẾ THIỆP CHÚC TẾT “ MỪNG XUÂN ẤT MÙI 2015”....... 
                         </p>
-                        <span class="date-begin-news">
+                        <span class='date-begin-news'>
                             Ngày đăng: 13/03/2015
                         </span>
-                        <span class="more-detail">
-                            <a href="#" class="more-detail">
+                        <span class='more-detail'>
+                            <a href='#' class='more-detail'>
                                 Chi tiết
                             </a>
                         </span>
@@ -153,7 +154,8 @@
                          KẾT QUẢ CUỘC THI THIẾT KẾ THIỆP CHÚC TẾT MỪNG XUÂN ẤT MÙI 2015
                     </a>
                 </div>
-            </div>
+            </div>--%>
+            <%=_htmlNews %>
         </div>
     </div>
     <div class="col-xs-12 col-md-3 right-main">
