@@ -1,4 +1,4 @@
-﻿<%@ page title="Cấu hình trang tĩnh" language="C#" masterpagefile="~/webmaster/page/webmaster.master" autoeventwireup="true" inherits="webmaster.page.webmaster_page_Page_Setting, App_Web_j5ubxec3" %>
+﻿<%@ page title="Cấu hình trang tĩnh" language="C#" masterpagefile="~/webmaster/page/webmaster.master" autoeventwireup="true" inherits="webmaster.page.webmaster_page_Page_Setting, App_Web_wlb4l3rd" %>
 <%@ Register Assembly="CKEditor.NET" Namespace="CKEditor.NET" TagPrefix="CKEditor" %>
 <asp:Content ID="ContentHeaderMaster" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>

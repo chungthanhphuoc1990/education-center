@@ -1,4 +1,4 @@
-﻿<%@ page title="Tin tức" language="C#" masterpagefile="~/webmaster/page/webmaster.master" autoeventwireup="true" inherits="webmaster.page.webmaster_page_News, App_Web_j5ubxec3" %>
+﻿<%@ page title="Tin tức" language="C#" masterpagefile="~/webmaster/page/webmaster.master" autoeventwireup="true" inherits="webmaster.page.webmaster_page_News, App_Web_wlb4l3rd" %>
 <%@ Register Assembly="CKEditor.NET" Namespace="CKEditor.NET" TagPrefix="CKEditor" %>
 <asp:Content ID="ContentHeaderMaster" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
@@ -104,7 +104,7 @@
                         <th style="text-align: center;vertical-align:middle;width: 15%">Số thứ tự</th>
                         <th style="text-align: center;vertical-align:middle;width: 10%">Trạng thái</th>
                         <th style="text-align: center;vertical-align:middle;width: 10%">Tin nóng</th>
-                        <th style="text-align: center;vertical-align:middle;width: 10%">Slide show</th>
+                        <th style="text-align: center;vertical-align:middle;width: 10%">Trang chủ</th>
                         <th style="text-align: center;vertical-align:middle; width: 15%" id="function" runat="server">Thao tác</th>
                     </tr>
                 </thead>

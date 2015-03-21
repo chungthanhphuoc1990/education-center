@@ -94,6 +94,16 @@
             width: 100%;
             height: auto;
         }
+        .loadding {
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 30%;
+        }
+        .loadding-main {
+            width: 11%;
+            margin: auto;
+        }
     </style>
 </head>
 <body>

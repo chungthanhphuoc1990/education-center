@@ -1,4 +1,4 @@
-﻿<%@ page title="Nhóm tiện ích" language="C#" masterpagefile="~/webmaster/page/webmaster.master" autoeventwireup="true" inherits="webmaster.page.webmaster_page_Utilities, App_Web_j5ubxec3" %>
+﻿<%@ page title="Nhóm tiện ích" language="C#" masterpagefile="~/webmaster/page/webmaster.master" autoeventwireup="true" inherits="webmaster.page.webmaster_page_Utilities, App_Web_wlb4l3rd" %>
 <asp:Content ID="ContentHeaderMaster" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="ContentContentMaster" ContentPlaceHolderID="ContentPlaceHolderMainMaster" Runat="Server">
