@@ -23,6 +23,7 @@ namespace page
             _htmlFooterPage = GetFooterTop();
             _htmlFooterBottomPage = GetFooterBottom();
             _htmSlideShow = GetSlide();
+            btnLanVn.Visible = false;
             var cookie = Request.Cookies["CurrentLanguage"];
             if (!IsPostBack && cookie != null && cookie.Value != null)
             {
