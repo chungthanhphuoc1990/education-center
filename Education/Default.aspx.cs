@@ -167,7 +167,7 @@ public partial class _Default : System.Web.UI.Page
                             _html += "</span>";
 
                             _html += "<span class='more-detail'>";
-                                _html += "<a href='/intro/" + _dtGetNews.Rows[0]["Friendly_Url_Vn"] + "' class='more-detail'>Chi tiết</a>";
+                                _html += "<a href='/detail/" + _dtGetNews.Rows[0]["Friendly_Url_Vn"] + "' class='more-detail'>Chi tiết</a>";
                             _html += "</span>";
                         _html += "</div>";
                     _html += "</div>";
@@ -187,13 +187,13 @@ public partial class _Default : System.Web.UI.Page
                         _html += "<div class='box-news'>";
                         if (_dtGetNews.Rows[i]["Titile_Vn"].ToString().Length > _maxLengthTitile)
                         {
-                            _html += "<a data-toggle='tooltip' data-placement='top' href='/intro/" + _dtGetNews.Rows[i]["Friendly_Url_Vn"] + "' class='box-news' title='" + _dtGetNews.Rows[i]["Titile_Vn"] + "'>";
+                            _html += "<a data-toggle='tooltip' data-placement='top' href='/detail/" + _dtGetNews.Rows[i]["Friendly_Url_Vn"] + "' class='box-news' title='" + _dtGetNews.Rows[i]["Titile_Vn"] + "'>";
                             _html += _dtGetNews.Rows[i]["Titile_Vn"].ToString().Substring(0,_maxLengthTitile) + "...";
                             _html += "</a>";
                         }
                         else
                         {
-                            _html += "<a href='/intro/" + _dtGetNews.Rows[i]["Friendly_Url_Vn"] + "' class='box-news'>";
+                            _html += "<a href='/detail/" + _dtGetNews.Rows[i]["Friendly_Url_Vn"] + "' class='box-news'>";
                             _html += _dtGetNews.Rows[i]["Titile_Vn"].ToString();
                             _html += "</a>";
                         }
@@ -262,13 +262,13 @@ public partial class _Default : System.Web.UI.Page
                         _html += "<div class='box-news'>";
                         if (_dtGetNews.Rows[i]["Titile_En"].ToString().Length > _maxLengthTitile)
                         {
-                            _html += "<a data-toggle='tooltip' data-placement='top' href='/intro/" + _dtGetNews.Rows[i]["Friendly_Url_En"] + "' class='box-news' title='" + _dtGetNews.Rows[i]["Titile_En"] + "'>";
+                            _html += "<a data-toggle='tooltip' data-placement='top' href='/detail/" + _dtGetNews.Rows[i]["Friendly_Url_En"] + "' class='box-news' title='" + _dtGetNews.Rows[i]["Titile_En"] + "'>";
                             _html += _dtGetNews.Rows[i]["Titile_En"].ToString().Substring(0, _maxLengthTitile) + "...";
                             _html += "</a>";
                         }
                         else
                         {
-                            _html += "<a href='/intro/" + _dtGetNews.Rows[i]["Friendly_Url_En"] + "' class='box-news'>";
+                            _html += "<a href='/detail/" + _dtGetNews.Rows[i]["Friendly_Url_En"] + "' class='box-news'>";
                             _html += _dtGetNews.Rows[i]["Titile_En"].ToString();
                             _html += "</a>";
                         }
@@ -298,7 +298,7 @@ public partial class _Default : System.Web.UI.Page
                     _html += "<h2 class='titile-images'>";
                     _html += _dtUtilities.Rows[i]["Gallery_Titile_Vn"].ToString();
                     _html += "</h2>";
-                    _html += "</div>";
+                    
 
                     //Parrent
                     _html += "<div class='box-fanpage''>";
@@ -309,6 +309,7 @@ public partial class _Default : System.Web.UI.Page
                             _html += _dtNotifyDetail.Rows[j]["ShortContent_Vn"].ToString();
                         }
                     }
+                    _html += "</div>";
                     _html += "</div>";
                 }
                 else
@@ -331,7 +332,9 @@ public partial class _Default : System.Web.UI.Page
                         for (int j = 0; j < _dtNotifyDetail.Rows.Count; j++)
                         {
                             _html += "<div class='item'>";
+                            _html += "<a class='fancybox-button' rel='fancybox-button' href='" + _dtNotifyDetail.Rows[j]["Img"] + "'>";
                             _html += "<img src='" + _dtNotifyDetail.Rows[j]["Img"] + "' alt='" + _dtNotifyDetail.Rows[j]["Gallery_Titile_Vn"] + "' style='height:204px'/>";
+                            _html += "</a>";
                             _html += "</div>";
                         }
                     }
@@ -361,8 +364,6 @@ public partial class _Default : System.Web.UI.Page
                     _html += "<h2 class='titile-images'>";
                     _html += _dtNotifyUtilities.Rows[i]["Gallery_Titile_En"].ToString();
                     _html += "</h2>";
-                    _html += "</div>";
-
                     //Parrent
                     _html += "<div class='box-fanpage'>";
                     if (_dtNotifyDetail != null && _dtNotifyDetail.Rows.Count > 0)
@@ -372,6 +373,7 @@ public partial class _Default : System.Web.UI.Page
                             _html += _dtNotifyDetail.Rows[j]["ShortContent_En"].ToString();
                         }
                     }
+                    _html += "</div>";
                     _html += "</div>";
                 }
                 else
@@ -394,7 +396,9 @@ public partial class _Default : System.Web.UI.Page
                         for (int j = 0; j < _dtNotifyDetail.Rows.Count; j++)
                         {
                             _html += "<div class='item'>";
+                            _html += "<a class='fancybox-button' rel='fancybox-button' href='" + _dtNotifyDetail.Rows[j]["Img"] + "'>";
                             _html += "<img src='" + _dtNotifyDetail.Rows[j]["Img"] + "' alt='" + _dtNotifyDetail.Rows[j]["Gallery_Titile_En"] + "' style='height:204px'/>";
+                            _html += "</a>";
                             _html += "</div>";
                         }
                     }

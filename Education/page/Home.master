@@ -21,6 +21,69 @@
     <link href="../owl.carousel/owl-carousel/owl.carousel.css" rel="stylesheet" />
     <link href="../owl.carousel/owl-carousel/owl.theme.css" rel="stylesheet" />
     <script src="../owl.carousel/owl-carousel/owl.carousel.js"></script>
+    <%--Fancybox--%>
+    <script src="../js/fancyBox/lib/jquery.mousewheel-3.0.6.pack.js"></script>
+    <link href="../js/fancyBox/source/jquery.fancybox.css" rel="stylesheet" />
+    <script src="../js/fancyBox/source/jquery.fancybox.pack.js"></script>
+    
+    <link href="../js/fancyBox/source/helpers/jquery.fancybox-buttons.css" rel="stylesheet" />
+    <script src="../js/fancyBox/source/helpers/jquery.fancybox-buttons.js"></script>
+    <script src="../js/fancyBox/source/helpers/jquery.fancybox-media.js"></script>
+
+    <link href="../js/fancyBox/source/helpers/jquery.fancybox-thumbs.css" rel="stylesheet" />
+    <script src="../js/fancyBox/source/helpers/jquery.fancybox-thumbs.js"></script>
+    
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".fancybox-button").fancybox({
+                prevEffect: 'none',
+                nextEffect: 'none',
+                closeBtn: false,
+                helpers: {
+                    title: { type: 'inside' },
+                    buttons: {}
+                }
+            });
+            $('.fancybox-media').fancybox({
+                openEffect: 'none',
+                closeEffect: 'none',
+                helpers: {
+                    media: {}
+                }
+            });
+            $(".fancybox").fancybox({
+                openEffect: 'elastic',
+                closeEffect: 'elastic',
+                autoSize: true,
+                type: 'iframe',
+                iframe: {
+                    preload: false // fixes issue with iframe and IE
+                }
+            });
+            $(".gallerypdf").click(function () {
+                $.fancybox({
+                    type: 'html',
+                    autoSize: false,
+                    content: '<embed src="' + this.href + '#nameddest=self&page=1&view=FitH,0&zoom=80,0,0" type="application/pdf" height="99%" width="100%" />',
+                    beforeClose: function () {
+                        $(".fancybox-inner").unwrap();
+                    }
+                }); //fancybox
+                return false;
+            }); // pdf 
+            $("#DialogLink").fancybox({
+                openEffect: 'elastic',
+                closeEffect: 'elastic',
+
+                helpers: {
+                    title: {
+                        type: 'inside'
+                    }
+                }
+            }).trigger("click"); //Adv
+        });
+    </script>
+    <%--End--%>
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
     <script type="text/javascript">

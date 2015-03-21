@@ -1,4 +1,4 @@
-﻿<%@ page title="Cấu hình trang tĩnh" language="C#" masterpagefile="~/webmaster/page/webmaster.master" autoeventwireup="true" inherits="webmaster.page.webmaster_page_Page_Setting, App_Web_wlb4l3rd" %>
+﻿<%@ page title="Cấu hình trang tĩnh" language="C#" masterpagefile="~/webmaster/page/webmaster.master" autoeventwireup="true" inherits="webmaster.page.webmaster_page_Page_Setting, App_Web_51nukgau" %>
 <%@ Register Assembly="CKEditor.NET" Namespace="CKEditor.NET" TagPrefix="CKEditor" %>
 <asp:Content ID="ContentHeaderMaster" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
@@ -30,7 +30,7 @@
                             </th>
                             <th style="text-align: center;vertical-align:middle;width: 20%">Tiêu đề trang</th>
                             <th style="text-align: center;vertical-align:middle;width: 20%">Cuối trang</th>
-                            <th style="text-align: center;vertical-align:middle;width: 15%">Icon</th>
+                            <th style="text-align: center;vertical-align:middle;width: 15%">Banner Thumb</th>
                             <th style="text-align: center;vertical-align:middle;width: 15%">Logo</th>
                             <th style="text-align: center;vertical-align:middle;width: 10%">Banner</th>
                             <th style="text-align: center;vertical-align:middle; width: 10%" id="function" runat="server">Thao tác</th>
@@ -70,7 +70,7 @@
                                     </td>
 
                                     <td style="text-align: center;vertical-align:middle" id="groupbtnlist" runat="server">
-                                        <asp:Button ID="btnEdit_lst" Visible="False" CommandName="Edit_lst" CssClass="btn btn-primary btn-xs groupbutton" title="Thay đổi" runat="server" Text="Thay đổi"/>
+                                        <asp:Button ID="btnEdit_lst" CommandName="Edit_lst" CssClass="btn btn-primary btn-xs groupbutton" title="Thay đổi" runat="server" Text="Thay đổi"/>
                                     </td>
                                 </tr>
                             </tbody>

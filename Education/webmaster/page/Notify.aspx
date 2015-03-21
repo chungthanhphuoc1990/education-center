@@ -1,4 +1,4 @@
-﻿<%@ page title="Block" language="C#" masterpagefile="~/webmaster/page/webmaster.master" autoeventwireup="true" inherits="webmaster.page.webmaster_page_Notify, App_Web_wlb4l3rd" %>
+﻿<%@ page title="Block" language="C#" masterpagefile="~/webmaster/page/webmaster.master" autoeventwireup="true" inherits="webmaster.page.webmaster_page_Notify, App_Web_51nukgau" %>
 <asp:Content ID="ContentHeaderMaster" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="ContentContentMaster" ContentPlaceHolderID="ContentPlaceHolderMainMaster" Runat="Server">
@@ -156,7 +156,7 @@
         <div class="modal-content">
             <div class="modal-header modal-header-background">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title modal-titile">Cập nhật nhóm thông báo</h4>
+                <h4 class="modal-title modal-titile">Cập nhật nhóm block</h4>
             </div>
             <div class="modal-body modal-body-height">
                 <asp:UpdatePanel ID="UpdatePanelUser" runat="server">

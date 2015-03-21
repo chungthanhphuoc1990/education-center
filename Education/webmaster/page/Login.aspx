@@ -1,4 +1,4 @@
-﻿<%@ page language="C#" autoeventwireup="true" inherits="webmaster.page.webmaster_page_Login, App_Web_ij44qqrg" %>
+﻿<%@ page language="C#" autoeventwireup="true" inherits="webmaster.page.webmaster_page_Login, App_Web_h4kmmjrl" %>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">

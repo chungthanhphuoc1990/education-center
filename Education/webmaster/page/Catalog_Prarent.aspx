@@ -1,4 +1,4 @@
-﻿<%@ page title="Trình đơn con" language="C#" masterpagefile="~/webmaster/page/webmaster.master" autoeventwireup="true" inherits="webmaster.page.webmaster_page_Catalog_Prarent, App_Web_wlb4l3rd" %>
+﻿<%@ page title="Trình đơn con" language="C#" masterpagefile="~/webmaster/page/webmaster.master" autoeventwireup="true" inherits="webmaster.page.webmaster_page_Catalog_Prarent, App_Web_51nukgau" %>
 <%@ Register Assembly="CKEditor.NET" Namespace="CKEditor.NET" TagPrefix="CKEditor" %>
 <asp:Content ID="ContentHeaderMaster" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
@@ -87,7 +87,7 @@
                             <th style="text-align: center;vertical-align:middle;width: 15%">Số thứ tự</th>
                             <th style="text-align: center;vertical-align:middle;width: 10%">Trạng thái</th>
                             <th style="text-align: center;vertical-align:middle;width: 10%">Trạng chủ</th>
-                            <th style="text-align: center;vertical-align:middle; width: 25%" id="function" runat="server">Thao tác</th>
+                            <th style="text-align: center;vertical-align:middle;width: 10%">Dạng Thumb</th>
                         </tr>
                     </thead>
                     <asp:ListView ID="ListViewAll" runat="server" DataKeyNames="ID_CatPrarent" ItemPlaceholderID="lstViewAll" OnItemCommand="ListViewAll_ItemCommand" OnItemDataBound="ListViewAll_ItemDataBound">
@@ -123,7 +123,7 @@
                                         <asp:CheckBox ID="chkHide"  Checked='<%# Eval("IsActive") %>' runat="server" />
                                     </td>
                                     
-                                     <td style="vertical-align:middle;text-align: center">
+                                    <td style="vertical-align:middle;text-align: center">
                                         <asp:CheckBox ID="chkIsShow"  Checked='<%# Eval("IsShow") %>' runat="server" />
                                     </td>
 
@@ -276,6 +276,7 @@
                         </div>
                         <input class="form-control" id="txtNum" type="hidden" runat="server"/>
                         <asp:CheckBox ID="chkHideEdit" runat="server" Visible="False" />
+                        <asp:CheckBox ID="chkIsGridUpdate" runat="server" Visible="False" />
                 </ContentTemplate>
             </asp:UpdatePanel>
             <div class="clr"></div>

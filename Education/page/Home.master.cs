@@ -102,9 +102,16 @@ namespace page
                             else
                             {
                                 if (_dtGetCatalogParrent.Rows[j]["Url"].ToString() == string.Empty ||
-                               _dtGetCatalogParrent.Rows[j]["Url"] == DBNull.Value)
+                                    _dtGetCatalogParrent.Rows[j]["Url"] == DBNull.Value)
                                 {
-                                    _html += "<a href='/news/" + _dtGetCatalogParrent.Rows[j]["Friendly_Url_Vn"] + "'><span>" + _dtGetCatalogParrent.Rows[j]["Catalog_Prarent_Titile_Vn"] + "</span></a>";
+                                    if ((bool) _dtGetCatlogMain.Rows[i]["IsGrid"])
+                                    {
+                                        _html += "<a href='/news-thumb/" + _dtGetCatalogParrent.Rows[j]["Friendly_Url_Vn"] + "'><span>" + _dtGetCatalogParrent.Rows[j]["Catalog_Prarent_Titile_Vn"] + "</span></a>";
+                                    }
+                                    else
+                                    {
+                                        _html += "<a href='/news/" + _dtGetCatalogParrent.Rows[j]["Friendly_Url_Vn"] + "'><span>" + _dtGetCatalogParrent.Rows[j]["Catalog_Prarent_Titile_Vn"] + "</span></a>";
+                                    }
                                 }
                                 else
                                 {
@@ -188,7 +195,14 @@ namespace page
                                 if (_dtGetCatalogParrent.Rows[j]["Url"].ToString() == string.Empty ||
                                _dtGetCatalogParrent.Rows[j]["Url"] == DBNull.Value)
                                 {
-                                    _html += "<a href='/news/" + _dtGetCatalogParrent.Rows[j]["Friendly_Url_En"] + "'><span>" + _dtGetCatalogParrent.Rows[j]["Catalog_Prarent_Titile_En"] + "</span></a>";
+                                    if ((bool)_dtGetCatlogMain.Rows[i]["IsGrid"])
+                                    {
+                                        _html += "<a href='/news-thumb/" + _dtGetCatalogParrent.Rows[j]["Friendly_Url_Vn"] + "'><span>" + _dtGetCatalogParrent.Rows[j]["Catalog_Prarent_Titile_En"] + "</span></a>";
+                                    }
+                                    else
+                                    {
+                                        _html += "<a href='/news/" + _dtGetCatalogParrent.Rows[j]["Friendly_Url_Vn"] + "'><span>" + _dtGetCatalogParrent.Rows[j]["Catalog_Prarent_Titile_En"] + "</span></a>";
+                                    }
                                 }
                                 else
                                 {
@@ -242,7 +256,7 @@ namespace page
             if (_dtGetPage != null && _dtGetPage.Rows.Count > 0)
             {
                 _html += "<div class='col-sm-12 col-md-6 col-lg-4'>";
-                    _html += "<a href='#'>";
+                    _html += "<a href='/'>";
                         _html += "<img alt='" + _dtGetPage.Rows[0]["Page_Titile"] + "' src='" +
                          _dtGetPage.Rows[0]["Page_Logo"] +
                          "'style='margin-left: 80px; margin-top: 14px;'/>";
@@ -250,7 +264,7 @@ namespace page
                 _html += "</div>";
 
                 _html += "<div id='hide'>";
-                    _html += "<a href='#'>";
+                    _html += "<a href='/'>";
                     _html += "<img alt='" + _dtGetPage.Rows[0]["Page_Titile"] + "' src='" +
                          _dtGetPage.Rows[0]["Page_Banner"] +
                          "'style='margin-left: -175px; margin-top: 35px;'/>";
@@ -267,14 +281,14 @@ namespace page
             if (_dtGetPage != null && _dtGetPage.Rows.Count > 0)
             {
                 _html += "<div class='col-sm-12 col-md-6 col-lg-4'>";
-                _html += "<a href='#'>";
+                _html += "<a href='/'>";
                 _html += "<img alt='" + _dtGetPage.Rows[0]["Page_Titile"] + "' src='" +
                            _dtGetPage.Rows[0]["Page_Logo"] + "'style='margin-left: 80px; margin-top: 14px;'/>";
                 _html += "</a>";
                 _html += "</div>";
 
                 _html += "<div id='hide'>";
-                _html += "<a href='#'>";
+                _html += "<a href='/'>";
                 _html += "<img alt='" + _dtGetPage.Rows[0]["Page_Titile"] + "' src='" +
                            _dtGetPage.Rows[0]["Page_Icon"] + "'style='margin-left: -175px; margin-top: 35px;'/>";
                 _html += "</a>";

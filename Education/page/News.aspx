@@ -20,6 +20,8 @@
                                <div class="col-md-9">
                                     <div class="titile-news">
                                         <a href='/detail/<%# Eval("Friendly_Url_Vn") %>'><%# Eval("Titile_Vn") %></a>
+                                    </div>
+                                    <div>
                                         <p class="short-content-news">
                                             <asp:Label ID="lb_lst_short_vn" runat="server" Text='<%# Eval("ShortContent_Vn") %>'/>
                                         </p>
@@ -49,6 +51,8 @@
                                <div class="col-md-9">
                                     <div class="titile-news">
                                         <a href='/detail/<%# Eval("Friendly_Url_En") %>'><%# Eval("Titile_En") %></a>
+                                    </div>
+                                    <div>
                                         <p class="short-content-news">
                                             <asp:Label ID="lb_lst_short_en" runat="server" Text='<%# Eval("ShortContent_En") %>'/>
                                         </p>
