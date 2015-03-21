@@ -83,6 +83,10 @@ namespace LibBusinessLayer
         {
             return DalNews.GetNewsHomePageTitile(keywords, Friendly_Url);
         }
+        public DataTable GetNewsHomePageTitile1(string keywords, string Friendly_Url)
+        {
+            return DalNews.GetNewsHomePageTitile1(keywords, Friendly_Url);
+        }
         public DataTable GetNewsHomePageDetail(string keywords, string Friendly_Url)
         {
             return DalNews.GetNewsHomePageDetail(keywords, Friendly_Url);

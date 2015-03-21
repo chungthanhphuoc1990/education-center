@@ -61,6 +61,10 @@ namespace LibBusinessLayer
         {
             return DalCatalogMain.GetCatalogMainHomePageDetail(Friendly_Url_Vn);
         }
+        public DataTable GetCatalogMainHomePageDetail1(string Friendly_Url_Vn)
+        {
+            return DalCatalogMain.GetCatalogMainHomePageDetail1(Friendly_Url_Vn);
+        }
         #endregion
     }
 }

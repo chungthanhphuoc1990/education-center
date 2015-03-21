@@ -171,6 +171,13 @@ namespace LibDataLayer
             Cls.AddParameter("Friendly_Url_Vn", Friendly_Url);
             return Cls.GetData("sp_News_Get_HomePageTitile");
         }
+        public static DataTable GetNewsHomePageTitile1(string keywords, string Friendly_Url)
+        {
+            Cls.CreateNewSqlCommand();
+            Cls.AddParameter("KEYWORDS", keywords);
+            Cls.AddParameter("Friendly_Url_Vn", Friendly_Url);
+            return Cls.GetData("sp_News_Get_HomePageTitile_1");
+        }
         public static DataTable GetNewsHomePageDetail(string keywords, string Friendly_Url)
         {
             Cls.CreateNewSqlCommand();

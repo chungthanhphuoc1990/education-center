@@ -116,6 +116,12 @@ namespace LibDataLayer
             Cls.AddParameter("Friendly_Url_Vn", Friendly_Url_Vn);
             return Cls.GetData("sp_CatalogMainHomeDetail_Get");
         }
+        public static DataTable GetCatalogMainHomePageDetail1(string Friendly_Url_Vn)
+        {
+            Cls.CreateNewSqlCommand();
+            Cls.AddParameter("Friendly_Url_Vn", Friendly_Url_Vn);
+            return Cls.GetData("sp_CatalogParrentHomeDetail_Get_1");
+        }
         #endregion
     }
     public class DTOCatalogMain
