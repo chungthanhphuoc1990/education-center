@@ -43,6 +43,7 @@ namespace LibDataLayer
             Cls.AddParameter("Keywords_ShortContent", obj.Keywords_ShortContent);
             Cls.AddParameter("Keywords_Descriptions", obj.Keywords_Descriptions);
             Cls.AddParameter("IsActive", obj.IsActive);
+            Cls.AddParameter("IsGrid", obj.IsGrid);
             Cls.AddParameter("Num", obj.Num);
             Cls.AddParameter("Url", obj.Url);
             Cls.ExecuteNonQuery("sp_CatalogMain_Insert");
@@ -65,6 +66,7 @@ namespace LibDataLayer
             Cls.AddParameter("Keywords_ShortContent", obj.Keywords_ShortContent);
             Cls.AddParameter("Keywords_Descriptions", obj.Keywords_Descriptions);
             Cls.AddParameter("IsActive", obj.IsActive);
+            Cls.AddParameter("IsGrid", obj.IsGrid);
             Cls.AddParameter("Num", obj.Num);
             Cls.AddParameter("Url", obj.Url);
             Cls.ExecuteNonQuery("sp_CatalogMain_Update");
@@ -99,6 +101,14 @@ namespace LibDataLayer
             Cls.AddParameter("ID_CatMain", obj.ID_CatMain);
             Cls.AddParameter("IsShow", obj.IsShow);
             Cls.ExecuteNonQuery("sp_CatalogMain_Update_IsShow");
+            return true;
+        }
+        public static bool UpdateIsGrid(DTOCatalogMain obj)
+        {
+            Cls.CreateNewSqlCommand();
+            Cls.AddParameter("ID_CatMain", obj.ID_CatMain);
+            Cls.AddParameter("IsGrid", obj.IsGrid);
+            Cls.ExecuteNonQuery("sp_CatalogMain_Update_IsGrid");
             return true;
         }
         #endregion
@@ -141,6 +151,7 @@ namespace LibDataLayer
         public string Keywords_Descriptions { get; set; }
         public bool IsActive { get; set; }
         public bool IsShow { get; set; }
+        public bool IsGrid { get; set; }
         public int Num { get; set; }
         public string Url { get; set; }
         public int Msg { get; set; }

@@ -50,6 +50,11 @@ namespace LibBusinessLayer
             DalCatalogMain.UpdateIsShow(obj);
             return true;
         }
+        public static bool UpdateIsGrid(DTOCatalogMain obj)
+        {
+            DalCatalogMain.UpdateIsGrid(obj);
+            return true;
+        }
         #endregion
 
         #region[Get-Data-HomePage]
